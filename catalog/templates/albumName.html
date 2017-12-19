@@ -1,0 +1,13 @@
+{% extends 'index.html' %}]
+{% block body %}
+
+<div class="albuminfo textfont centertext">
+  <img src='{{album.imglink}}' width=300 height=300 />
+  <h3>{{album.name}}</h3>
+  <p>{{album.band}}</p>
+  <p>Year: {{album.year}}</p>
+  <span>Tracks:</span><br /><p class="tracklist">{{album.tracklist}}</p><br />
+  <a href="{{url_for('editAlbum', id=album.id)}}">EDIT</a><br /> <a href="{{url_for('deleteAlbum', id=album.id)}}">REMOVE</a>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,193 @@
+html, body{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  margin: 0;
+}
+
+#element::-webkit-scrollbar {
+  display: none;
+}
+
+.textfont {
+  font-family: 'Comfortaa', cursive;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.centertext {
+  text-align: center;
+}
+.pinkheader {
+  background-color: #BE90D4;
+  margin: 0;
+  height: 120px;
+}
+
+.pinkheader h1 {
+  margin: 0;
+  padding-left: 40px;
+  font-family: 'Anton', sans-serif;
+  font-size: 80px;
+  display: inline-block;
+}
+
+.SignIn {
+  float: right;
+}
+
+.SignIn__button {
+  padding: 4px;
+  margin: 40px;
+}
+
+.SignIn__welcome {
+  margin: 40px;
+}
+
+
+.SignIn__link {
+  display: inline-block;
+  margin: 40px;
+}
+
+#signinButton {
+  width: 10%;
+  margin: 60px auto 0 auto;
+}
+
+#result {
+  padding-top: 40px;
+  padding-right: 20px;
+}
+
+.allsite {
+  position: relative;
+  height: 100%;
+}
+
+.sidebar {
+  float: left;
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+  background-color: #9B59B6;
+}
+
+.sidebar__title {
+  font-family: 'Comfortaa', cursive;
+  font-weight: bold;
+  color: black;
+  font-size: 30px;
+
+}
+
+.sidebar__styles {
+  display: block;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+}
+
+.content {
+  display: inline-block;
+  position: relative;
+  width: 80%;
+  height: 100%;
+  float: left;
+  overflow: scroll;
+
+}
+
+.addlink {
+  margin: auto;
+  width: 180px;
+  font-weight: bold;
+  margin-top: 40px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #9B59B6;
+  color: white;
+}
+
+.vinylcontainer {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 200px;
+  width: 100%;
+}
+
+.vinyl {
+  margin: 30px;
+  display: inline-block;
+}
+
+/* albumName style */
+
+.albuminfo {
+  padding: 40px;
+}
+
+.tracklist {
+  display: inline-block;
+  white-space: pre-wrap;
+  text-align: left;
+  max-width: 500px;
+}
+
+/* addAlbum style */
+
+.addform {
+  margin: 50px;
+}
+
+.addform form {
+  display: inline-block;
+  margin-left: auto;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.form__field {
+  padding: 10px;
+  list-style: none;
+}
+
+.floatright {
+  float: right;
+}
+
+.form__field li {
+  padding-top: 10px;
+}
+
+.addbutton {
+  display: block;
+  margin: auto !important;
+}
+
+.verticaltop {
+  vertical-align: top;
+}
+
+/* LOGIN */
+.welcome {
+  display: block;
+  width: 400px;
+  margin: auto;
+}
+
+.userpicture {
+  margin: auto;
+  width: 300px;
+  height: 300px;
+  display: block;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+}

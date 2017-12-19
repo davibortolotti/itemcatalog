@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+  {% block head %}
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+  {% endblock head %}
+    {% block body %}
+
+      {% if session['username'] and not welcome %}
+      <div>You Are already logged in as {{session['username']}}! If you want to login as a different user, please <a href="{{url_for('gdisconnect')}}">Log Out</a>.</div>
+
+      {% elif welcome %}
+      <div class="welcome">
+        <h1 class="textfont centertext">Welcome, {{session['username']}}!</h1>
+        <img class="userpicture" src="{{session['picture']}}">
+        <h2 class="textfont centertext">You'll be redirected in no time...</h2>
+      </div>
+      {% else %}
+      <h4 class="textfont centertext">Please log in with your google account. If you do so, you'll be able to add, edit and delete your albums.</h1>
+      <div id="signinButton">
+        <span class="g-signin"
+          data-scope='openid email'
+          data-clientid="831661248459-iu4ghbefvjsvq2ilgs7msi8i1h9g0mdo.apps.googleusercontent.com"
+          data-redirecturi="postmessage"
+          data-accesstype="offline"
+          data-cookiepolicy="single_host_origin"
+          data-callback="signInCallback"
+          data-approvalprompt="force">
+        </span>
+      </div>
+      <div id="result"></div>
+      {% endif %}
+      {% endblock body %}
+
+      {% block scripts %}
+      <script>
+        // FUNCTION TO SEND AUTHRESULT TO BACKEND
+        function signInCallback(authResult) {
+          if (authResult['code']) {
+            // Hide the sign-in button now that the user is authorized
+            $('#signinButton').attr('style', 'display: none');
+            // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+            $.ajax({
+              type: 'POST',
+              url: '/gconnect?state={{STATE}}',
+              processData: false,
+              data: authResult['code'],
+              contentType: 'application/octet-stream; charset=utf-8',
+              success: function(result) {
+                // Handle or verify the server response if necessary.
+                if (result) {
+                  $('body').html(result)
+                    setTimeout(function() {
+                      window.location.href = "{{url_for('homePage')}}";
+                    }, 4000);
+
+                } else if (authResult['error']) {
+                  console.log('There was an error: ' + authResult['error']);
+                } else {
+                  $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+                }
+              }
+            });
+          }
+        }
+      </script>
+      {% endblock scripts %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link href="https://fonts.googleapis.com/css?family=Anton|Comfortaa|Roboto+Mono" rel="stylesheet">
+    <title>LA DISCOTHEQUE</title>
+    {% block head %}{% endblock head %}
+  </head>
+  <body>
+    <header class="pinkheader">
+      <a class="link" href={{url_for("homePage")}}><h1>LA DISCOTHEQUE</h1></a>
+      <div class="SignIn">
+      {% if not session['username'] %}
+        <h4 class="SignIn__link textfont">Please <a href="{{url_for('login')}}">Log in</a> to add or edit albums.</h4>
+      {% else %}
+        <h4 class="SignIn__welcome textfont">Welcome {{session['username']}}. <a href="{{url_for('gdisconnect')}}">Log Out</a></h4>
+      {% endif %}
+      </div>
+    </header>
+    <div class="allsite">
+
+
+    <aside class="sidebar centertext" >
+        <h3 class="sidebar__title">MUSICAL STYLES</h3>
+        <a class="sidebar__styles link textfont" href="{{url_for('allAlbums')}}">All albums</a><br />
+        {% for i in styles %}
+          {% if i.name %}
+          <a class="sidebar__styles link textfont" href="{{url_for('styleAlbums', style=i.name)}}">{{i.name}}</a><br />
+          {% endif %}
+        {% endfor %}
+    </aside><section class="content">
+
+      {% block body %}
+        <div class = 'flash'>
+        	{% with messages = get_flashed_messages() %}
+            {% if messages %}
+
+              <ul>
+                {% for message in messages %}
+                  <li> <strong> {{ message }} </strong> </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+
+        </div>
+      <div class="addlink textfont centertext">
+
+        <a class="link" href="{{url_for('addAlbum')}}">ADD A NEW ALBUM!</a></div>
+        <h2 class="textfont centertext">{{pagetitle}}</h2>
+        <div class="vinylcontainer">
+
+          {% for i in vinyls %}
+            <div class="vinyl">
+
+
+              <a href="{{url_for('albumName', id=i.id)}}"><img src='{{i.imglink}}' width=300 height=300 /></a>
+              <p class="centertext textfont">
+              {{i.name}}
+              </p>
+
+            </div>
+          {% endfor %}
+        </div>
+    {% endblock body %}
+
+    </section>
+    </div>
+    {% block scripts %}{% endblock scripts %}
+
+  </body>
+</html>

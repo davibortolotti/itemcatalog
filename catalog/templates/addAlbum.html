@@ -1,0 +1,23 @@
+{% extends 'index.html' %}]
+{% block body %}
+<div class="addform textfont centertext">
+  <h2>Add a new album to your collection</h2>
+  <form method='POST'>
+    <ul class="form__field">
+      <li>Album name: <input class="floatright" type=text name='name' required /></li>
+      <li>Band: <input class="floatright" type=text name='band' required /></li>
+      <li>Year: <input class="floatright" type=number name='year' /></li>
+      <li>Musical Style:</li>
+      {% for i in styles %}
+        <div><input type=checkbox name='style' value="{{i.name}}" />{{i.name}}</div>
+      {% endfor %}
+      <li >New Style: <input class="floatright" type=text name='styleAdd'/></li>
+      <li>Album art URL: <input class="floatright" type=text name='imglink' /></li>
+      <li><span class="verticaltop">Tracks: </span><br /><textarea name='tracklist' rows=30 cols=50/></textarea></li>
+      <li><input class="addbutton" type=submit value='Add'></li>
+    </ul>
+  </form>
+</div>
+
+
+{% endblock body %}

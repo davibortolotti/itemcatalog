@@ -1,0 +1,16 @@
+{% extends 'index.html' %}]
+{% block body %}
+<div class="addform textfont">
+  <h2>Editing {{album.name}}</h2>
+  <form method='POST'>
+    <ul class="form__field">
+      <li>Album name: <input class="floatright" type=text name='name' value='{{album.name}}' required /></li>
+      <li>Band: <input class="floatright" type=text name='band' value='{{album.band}}' required /></li>
+      <li>Year: <input class="floatright" type=number value='{{album.year}}' name='year' /></li>
+      <li>Album art URL: <input class="floatright" type=text value='{{album.imglink}}' name='imglink' /></li>
+      <li>Tracks:<br /> <textarea class="verticaltop" name='tracklist' rows=30 cols=50/>{% autoescape false %}{{album.tracklist}}{% endautoescape %}</textarea></li>
+      <li><input class="addbutton" type=submit value='Edit'>
+  </form>
+  <a href="..">Back</button>
+</div>
+{% endblock %}
