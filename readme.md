@@ -5,12 +5,20 @@ This repository contains the code regarding the "Build an Item Catalog Applicati
 ## Setting-up
 
 1. In order to use the application, one must have installed [Vagrant](https://www.vagrantup.com/downloads.html) and [Virtual Box](https://www.virtualbox.org/).
+
 2. Launch the Vagrant virtual machine inside the root folder (itemcatalog), using the command line and the following commands:
 ```
 vagrant up
 vagrant ssh
 ```
-3. Then, one must access the catalog folder and run 'python application.py'
+3. Then, one must access the catalog folder.
+  Before running the application, you must install two modules that are not yet installed in the vm. Just type:
+  ```
+  sudo pip install flask.httpauth
+  sudo pip install passlib
+  ```
+  and then finally, run 'python application.py'.
+
 4. When 'http:\\localhost:5000' is accessed, you will see the item catalog. Congrats!
 
 ## Functions
